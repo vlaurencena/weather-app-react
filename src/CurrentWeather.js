@@ -11,16 +11,15 @@ const CurrentWeather = (props) => {
 
     let dayString = `${dayOfWeek}, ${currentDate.getDate()} ${month}`;
 
-
     return (
         <div className="current-weather">
             <img src={props.image} alt={props.description} />
             <div className="current-weather__temp">{props.temp}<span>ºC</span></div>
             <div className="current-weather__main">{props.main}</div>
             <div className="current-weather__date">
-                <div className="first-div">Today</div>
-                <span>•</span>
-                <div className="second-div">{dayString}</div>
+                <div className="left-div">Today</div>
+                <span className="middle-div">•</span>
+                <div className="right-div">{dayString}</div>
             </div>
             <div className="current-weather__name">{props.name}</div>
         </div>

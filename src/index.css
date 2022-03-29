@@ -6,7 +6,6 @@ body {
   color: #ffffff;
   font-family: "Raleway", sans-serif;
 }
-
 /* CURRENT WEATHER */
 
 .current-weather {
@@ -42,38 +41,34 @@ body {
 .current-weather__date {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
-.current-weather__date > div {
-  position: absolute;
-}
-
-.first-div {
-  left: 30vw;
-}
-
-.second-div {
-  right: 30vw;
-}
-
-.current-weather__date > div {
-  position: absolute;
+.middle-div {
+  width: 20%;
+  text-align: center;
 }
 
 .current-weather__name {
   color: #88869d;
 }
 
+/* SECONDARY INFORMATION */
+.secondary-information {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+  min-height: 100vh;
+  background-color: #100e1d;
+}
+
 /* EXTENDED WEATHER */
 .extended-weather {
-  background-color: #100e1d;
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  padding: 50px;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 20px;
+  padding: 20px;
+  row-gap: 20px;
 }
 
 .extended-weather-item {
@@ -99,13 +94,20 @@ body {
 }
 
 .todays-highlights {
+  padding: 24px;
+}
+.todays-highlights__container {
   background-color: #100e1d;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 24px;
 }
 
+.todays-highlights > div:first-of-type {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
 .todays-highlights__item {
   background-color: #1e213a;
   display: block;
@@ -131,11 +133,10 @@ body {
   align-items: center;
   gap: 15px;
 }
-.wind-direction>img {
+.wind-direction > img {
   width: 25px;
   height: 25px;
-  filter:  brightness(0) invert(1);
-
+  filter: brightness(0) invert(1);
 }
 
 .humidity-graphic {
@@ -152,13 +153,13 @@ body {
 }
 
 .humidity-graphic__bar-container {
-  background-color: #E7E7EB;
+  background-color: #e7e7eb;
   border-radius: 4px;
 }
 
-.humidity-graphic__bar-container>div {
+.humidity-graphic__bar-container > div {
   min-height: 8px;
-  background-color: #FFEC65;
+  background-color: #ffec65;
   border-radius: 4px;
 }
 
@@ -167,7 +168,49 @@ body {
 }
 
 .footer {
-  background-color: #100E1D;
+  background-color: #100e1d;
   padding: 24px;
   text-align: center;
+}
+
+@media only screen and (min-width: 1000px) {
+  .app-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  /* CURRENT WEATHER */
+  .first-div {
+    left: -100px;
+  }
+
+  .second-div {
+    right: 10px;
+  }
+
+  /* SECONDARY INFORMATION */
+  .secondary-information {
+    padding: 0 150px;
+  }
+  /* EXTENDED WEATHER */
+  .extended-weather {
+    display: flex;
+    margin: auto;
+    padding: 50px;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+    align-items: stretch;
+  }
+
+  /* TODAYS HIGHLIGHTS */
+
+  .todays-highlights__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    column-gap: 20px;
+    row-gap: 20px;
+  }
 }

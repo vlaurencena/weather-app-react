@@ -109,7 +109,7 @@ const App = () => {
   }, [extendedWeatherInfo]);
 
   return (
-    <>
+    <div className="app-container">
       <CurrentWeather
         image={currentWeatherInfo.image}
         temp={currentWeatherInfo.temp}
@@ -117,7 +117,7 @@ const App = () => {
         date={currentWeatherInfo.date}
         name={currentWeatherInfo.name}
       />
-      <div>
+      <div className="secondary-information">
         {extendedWeatherInfo && <ExtendedWeather
           extendedWeatherInfo={extendedWeatherInfo}
         />
@@ -132,7 +132,7 @@ const App = () => {
         }
         <Footer />
       </div>
-    </>
+    </div>
   );
 }
 

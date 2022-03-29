@@ -54,37 +54,39 @@ const TodaysHightlights = (props) => {
     return (
         <div className="todays-highlights">
             <div>Today’s Hightlights </div>
-            <div className="todays-highlights__item">
-                <div className="title">Wind status</div>
-                <div className="data">{props.windSpeed}m/s</div>
-                <div className="wind-direction">
-                    <img style={rotation} className="wind-direction__icon" src={windDirectionIcon} alt="Wind Direction" />
-                    <div>{windDirection}</div>
-                </div>
-            </div>
-            <div className="todays-highlights__item">
-                <div className="title">Humidity</div>
-                <div className="data">{props.humidity}%</div>
-                <div className="humidity-graphic">
-                    <div className="humidity-graphic__reference">
-                        <div>0</div>
-                        <div>50</div>
-                        <div>100</div>
+            <div className="todays-highlights__container">
+                <div className="todays-highlights__item">
+                    <div className="title">Wind status</div>
+                    <div className="data">{props.windSpeed}m/s</div>
+                    <div className="wind-direction">
+                        <img style={rotation} className="wind-direction__icon" src={windDirectionIcon} alt="Wind Direction" />
+                        <div>{windDirection}</div>
                     </div>
-                    <div className="humidity-graphic__bar-container">
-                        <div style={percentage}>
+                </div>
+                <div className="todays-highlights__item">
+                    <div className="title">Humidity</div>
+                    <div className="data">{props.humidity}%</div>
+                    <div className="humidity-graphic">
+                        <div className="humidity-graphic__reference">
+                            <div>0</div>
+                            <div>50</div>
+                            <div>100</div>
                         </div>
+                        <div className="humidity-graphic__bar-container">
+                            <div style={percentage}>
+                            </div>
+                        </div>
+                        <div className="humidity-graphic__percentage-symbol">%</div>
                     </div>
-                    <div className="humidity-graphic__percentage-symbol">%</div>
                 </div>
-            </div>
-            <div className="todays-highlights__item">
-                <div className="title">Visibility</div>
-                <div className="data">{props.visibility / 1000} kms</div>
-            </div>
-            <div className="todays-highlights__item">
-                <div className="title">Air Pressure</div>
-                <div className="data">{props.airPressure} mb</div>
+                <div className="todays-highlights__item">
+                    <div className="title">Visibility</div>
+                    <div className="data">{props.visibility / 1000} kms</div>
+                </div>
+                <div className="todays-highlights__item">
+                    <div className="title">Air Pressure</div>
+                    <div className="data">{props.airPressure} mb</div>
+                </div>
             </div>
         </div >
     )
