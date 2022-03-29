@@ -17,6 +17,8 @@ const App = () => {
 
   const [todaysHightlights, setTodaysHightlights] = useState();
 
+  const [units, setUnits] = useState("metric");
+
   const API_ID = "a8fe3487d2716316b000c6a085ce3465";
   // const API_ID = "22d10d348acc9b870cc8d15e5d426019";
   // const API_ID = "5d66e6f0ff5769ea764ea1ea7d779d5f";
@@ -53,7 +55,7 @@ const App = () => {
           appid: API_ID,
           lat: location.lat,
           lon: location.lon,
-          units: "metric"
+          units: units
         }
       })
         .then(function (response) {
@@ -77,7 +79,7 @@ const App = () => {
           console.log(error);
         })
     }
-  }, [location]);
+  }, [location, units]);
 
   // EXTENDED WEATHER
   useEffect(() => {
@@ -87,7 +89,7 @@ const App = () => {
           appid: API_ID,
           lat: location.lat,
           lon: location.lon,
-          units: "metric",
+          units: units,
         }
       })
         .then(function (response) {
@@ -98,7 +100,7 @@ const App = () => {
           console.log(error);
         })
     }
-  }, [location]);
+  }, [location, units]);
 
   useEffect(() => {
     console.log(currentWeatherInfo);
@@ -108,9 +110,14 @@ const App = () => {
     console.log(extendedWeatherInfo);
   }, [extendedWeatherInfo]);
 
+  const handleUnitChange = (e) => {
+    setUnits(e.target.id)
+  }
+
   return (
     <div className="app-container">
       <CurrentWeather
+        units={units}
         image={currentWeatherInfo.image}
         temp={currentWeatherInfo.temp}
         main={currentWeatherInfo.main}
@@ -118,11 +125,17 @@ const App = () => {
         name={currentWeatherInfo.name}
       />
       <div className="secondary-information">
+        <ul onClick={handleUnitChange}>
+          <li className={units === "metric" ? "active-unit" : "inactive-unit"} id="metric">ºC</li>
+          <li className={units === "metric" ? "inactive-unit" : "active-unit"} id="imperial">ºF</li>
+        </ul>
         {extendedWeatherInfo && <ExtendedWeather
+          units={units}
           extendedWeatherInfo={extendedWeatherInfo}
         />
         }
         {todaysHightlights && <TodaysHightlights
+          units={units}
           windSpeed={todaysHightlights.windSpeed}
           windDirection={todaysHightlights.windDirection}
           humidity={todaysHightlights.humidity}

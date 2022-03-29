@@ -57,7 +57,7 @@ const TodaysHightlights = (props) => {
             <div className="todays-highlights__container">
                 <div className="todays-highlights__item">
                     <div className="title">Wind status</div>
-                    <div className="data">{props.windSpeed}m/s</div>
+                    <div className="data">{props.windSpeed}{props.units === "metric" ? "m/s" : "mph"}</div>
                     <div className="wind-direction">
                         <img style={rotation} className="wind-direction__icon" src={windDirectionIcon} alt="Wind Direction" />
                         <div>{windDirection}</div>
@@ -81,7 +81,7 @@ const TodaysHightlights = (props) => {
                 </div>
                 <div className="todays-highlights__item">
                     <div className="title">Visibility</div>
-                    <div className="data">{props.visibility / 1000} kms</div>
+                    <div className="data">{props.visibility / 1000} {props.units === "metric" ? "kms" : "miles"}</div>
                 </div>
                 <div className="todays-highlights__item">
                     <div className="title">Air Pressure</div>

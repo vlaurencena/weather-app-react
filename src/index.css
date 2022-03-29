@@ -18,7 +18,7 @@ body {
 }
 
 .current-weather img {
-  width: 150px;
+  width: 50%;
 }
 
 .current-weather__temp {
@@ -60,14 +60,18 @@ body {
   justify-content: stretch;
   min-height: 100vh;
   background-color: #100e1d;
+  padding: 20px;
+  gap: 20px;
 }
 
+.secondary-information ul {
+  visibility: hidden;
+}
 /* EXTENDED WEATHER */
 .extended-weather {
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 20px;
-  padding: 20px;
   row-gap: 20px;
 }
 
@@ -93,9 +97,7 @@ body {
   color: #a09fb1;
 }
 
-.todays-highlights {
-  padding: 24px;
-}
+
 .todays-highlights__container {
   background-color: #100e1d;
   display: flex;
@@ -190,13 +192,35 @@ body {
 
   /* SECONDARY INFORMATION */
   .secondary-information {
-    padding: 0 150px;
+    padding: 20px 150px;
   }
+
+  .secondary-information ul {
+    margin: 0 0 0 auto;
+    padding: 0;
+    visibility: visible;
+    display: flex;
+    list-style: none;
+    gap: 5px;
+  }
+
+  .secondary-information ul li {
+    padding: 15px;
+    border-radius: 100%;
+  }
+
+  .inactive-unit {
+    background-color: #585676;
+  }
+
+  .active-unit {
+    background-color: #e7e7eb;
+  }
+
   /* EXTENDED WEATHER */
   .extended-weather {
     display: flex;
     margin: auto;
-    padding: 50px;
     align-items: center;
     justify-content: center;
     gap: 20px;

@@ -13,6 +13,7 @@ const ExtendedWeather = (props) => {
                         image={day.weather[0].icon}
                         maxTemp={day.temp.max}
                         minTemp={day.temp.min}
+                        units={props.units}
                     />
                 }
             })}

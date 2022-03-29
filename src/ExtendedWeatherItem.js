@@ -16,8 +16,8 @@ const ExtendedWeatherItem = (props) => {
             <div>{props.tomorrow ? "Tomorrow" : dayString}</div>
             <img src={imageUrl} alt="desc" />
             <div className="extended-weather-item__temp">
-                <div>{props.maxTemp} ºC</div>
-                <div>{props.minTemp} ºC</div>
+                <div>{props.maxTemp}{props.units === "metric" ? "ºC" : "ºF"}</div>
+                <div>{props.minTemp}{props.units === "metric" ? "ºC" : "ºF"}</div>
             </div>
         </div>
     )

@@ -14,7 +14,7 @@ const CurrentWeather = (props) => {
     return (
         <div className="current-weather">
             <img src={props.image} alt={props.description} />
-            <div className="current-weather__temp">{props.temp}<span>ºC</span></div>
+            <div className="current-weather__temp">{props.temp}<span>{props.units === "metric" ? "ºC" : "ºF"}</span></div>
             <div className="current-weather__main">{props.main}</div>
             <div className="current-weather__date">
                 <div className="left-div">Today</div>
