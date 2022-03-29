@@ -7,59 +7,112 @@ import ExtendedWeather from "./ExtendedWeather";
 
 const App = () => {
 
-  const [location, setLocation] = useState({
-    lat: 35,
-    lon: 139
-  });
+  const [location, setLocation] = useState();
 
   const [currentWeatherInfo, setCurrentWeatherInfo] = useState({});
 
-  const API_ID = "5d66e6f0ff5769ea764ea1ea7d779d5f";
+  const [extendedWeatherInfo, setExtendedWeatherInfo] = useState();
 
+  const API_ID = "a8fe3487d2716316b000c6a085ce3465";
+  // const API_ID = "22d10d348acc9b870cc8d15e5d426019";
+  // const API_ID = "5d66e6f0ff5769ea764ea1ea7d779d5f";
+
+
+  // GET LOCATION
   useEffect(() => {
-    axios.get("https://api.openweathermap.org/data/2.5/weather?", {
-      params: {
-        appid: API_ID,
-        lat: location.lat,
-        lon: location.lon,
-        units: "metric"
+    function getUserLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else {
+        alert("Geolocation is not supported by this browser.");
       }
-    })
-      .then(function (response) {
-        // CURRENT
-        console.log(response.data);
-        let currentWeather = response.data;
-        console.log(currentWeather)
-        setCurrentWeatherInfo({
-          image: `http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@4x.png`,
-          temp: currentWeather.main.temp,
-          main: currentWeather.weather[0].main,
-          date: currentWeather.dt,
-          name: currentWeather.name,
-        })
+    }
+
+    function showPosition(position) {
+      setLocation({
+        lat: position.coords.latitude,
+        lon: position.coords.longitude
       })
-      .catch(function (response) {
-        return;
-      })
+      console.log("Latitude: " + position.coords.latitude);
+      console.log("Longitude: " + position.coords.longitude);
+    }
+    getUserLocation();
   }, []);
 
+  // API REQUEST
+
+  // CURRENT WEATHER
   useEffect(() => {
-    currentWeatherInfo && console.log(currentWeatherInfo);
+    if (location) {
+      axios.get("https://api.openweathermap.org/data/2.5/weather", {
+        params: {
+          appid: API_ID,
+          lat: location.lat,
+          lon: location.lon,
+          units: "metric"
+        }
+      })
+        .then(function (response) {
+          let currentWeather = response.data;
+          setCurrentWeatherInfo({
+            image: `http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@4x.png`,
+            temp: currentWeather.main.temp,
+            main: currentWeather.weather[0].main,
+            date: currentWeather.dt,
+            name: currentWeather.name,
+          })
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
+  }, [location]);
+
+  // EXTENDED WEATHER
+  useEffect(() => {
+    if (location) {
+      axios.get("https://api.openweathermap.org/data/2.5/onecall", {
+        params: {
+          appid: API_ID,
+          lat: location.lat,
+          lon: location.lon,
+          units: "metric",
+        }
+      })
+        .then(function (response) {
+          console.log(response);
+          setExtendedWeatherInfo(response.data.daily);
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
+  }, [location]);
+
+  useEffect(() => {
+    console.log(currentWeatherInfo);
   }, [currentWeatherInfo]);
+
+  useEffect(() => {
+    console.log(extendedWeatherInfo);
+  }, [extendedWeatherInfo]);
 
 
 
   return (
     <>
-      <CurrentWeather
+      {/* <CurrentWeather
         image={currentWeatherInfo.image}
         temp={currentWeatherInfo.temp}
         main={currentWeatherInfo.main}
         date={currentWeatherInfo.date}
         name={currentWeatherInfo.name}
-      />
+      /> */}
       <div>
-        <ExtendedWeather />
+        {extendedWeatherInfo && <ExtendedWeather
+          extendedWeatherInfo={extendedWeatherInfo}
+        />
+        }
       </div>
     </>
   );
