@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import CurrentWeather from "./CurrentWeather";
 import axios from "axios";
+import ExtendedWeather from "./ExtendedWeather";
 
 
 
@@ -49,7 +50,7 @@ const App = () => {
 
 
   return (
-    <div className="">
+    <>
       <CurrentWeather
         image={currentWeatherInfo.image}
         temp={currentWeatherInfo.temp}
@@ -57,7 +58,10 @@ const App = () => {
         date={currentWeatherInfo.date}
         name={currentWeatherInfo.name}
       />
-    </div>
+      <div>
+        <ExtendedWeather />
+      </div>
+    </>
   );
 }
 
