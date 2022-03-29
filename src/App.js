@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import CurrentWeather from "./CurrentWeather";
 import axios from "axios";
 import ExtendedWeather from "./ExtendedWeather";
+import TodaysHightlights from "./TodaysHightlights";
+import Footer from "./Footer";
 
 
 
@@ -12,6 +14,8 @@ const App = () => {
   const [currentWeatherInfo, setCurrentWeatherInfo] = useState({});
 
   const [extendedWeatherInfo, setExtendedWeatherInfo] = useState();
+
+  const [todaysHightlights, setTodaysHightlights] = useState();
 
   const API_ID = "a8fe3487d2716316b000c6a085ce3465";
   // const API_ID = "22d10d348acc9b870cc8d15e5d426019";
@@ -41,7 +45,7 @@ const App = () => {
 
   // API REQUEST
 
-  // CURRENT WEATHER
+  // CURRENT WEATHER (https://openweathermap.org/current)
   useEffect(() => {
     if (location) {
       axios.get("https://api.openweathermap.org/data/2.5/weather", {
@@ -60,6 +64,13 @@ const App = () => {
             main: currentWeather.weather[0].main,
             date: currentWeather.dt,
             name: currentWeather.name,
+          });
+          setTodaysHightlights({
+            windSpeed: currentWeather.wind.speed,
+            windDirection: currentWeather.wind.deg,
+            humidity: currentWeather.main.humidity,
+            visibility: currentWeather.visibility,
+            airPressure: currentWeather.main.pressure
           })
         })
         .catch(function (error) {
@@ -97,22 +108,29 @@ const App = () => {
     console.log(extendedWeatherInfo);
   }, [extendedWeatherInfo]);
 
-
-
   return (
     <>
-      {/* <CurrentWeather
+      <CurrentWeather
         image={currentWeatherInfo.image}
         temp={currentWeatherInfo.temp}
         main={currentWeatherInfo.main}
         date={currentWeatherInfo.date}
         name={currentWeatherInfo.name}
-      /> */}
+      />
       <div>
         {extendedWeatherInfo && <ExtendedWeather
           extendedWeatherInfo={extendedWeatherInfo}
         />
         }
+        {todaysHightlights && <TodaysHightlights
+          windSpeed={todaysHightlights.windSpeed}
+          windDirection={todaysHightlights.windDirection}
+          humidity={todaysHightlights.humidity}
+          visibility={todaysHightlights.visibility}
+          airPressure={todaysHightlights.airPressure}
+        />
+        }
+        <Footer />
       </div>
     </>
   );

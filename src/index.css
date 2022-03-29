@@ -94,6 +94,80 @@ body {
   gap: 25px;
 }
 
-.extended-weather-item__temp>div:last-of-type {
-  color:#A09FB1;
+.extended-weather-item__temp > div:last-of-type {
+  color: #a09fb1;
+}
+
+.todays-highlights {
+  background-color: #100e1d;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 24px;
+}
+
+.todays-highlights__item {
+  background-color: #1e213a;
+  display: block;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 15px;
+}
+
+.todays-highlights__item > .title {
+  color: #e7e7eb;
+  font-weight: 500;
+}
+.todays-highlights__item > .data {
+  font-size: 64px;
+  font-weight: 700;
+}
+
+.todays-highlights__item > .wind-direction {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+.wind-direction>img {
+  width: 25px;
+  height: 25px;
+  filter:  brightness(0) invert(1);
+
+}
+
+.humidity-graphic {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+}
+
+.humidity-graphic__reference {
+  min-width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.humidity-graphic__bar-container {
+  background-color: #E7E7EB;
+  border-radius: 4px;
+}
+
+.humidity-graphic__bar-container>div {
+  min-height: 8px;
+  background-color: #FFEC65;
+  border-radius: 4px;
+}
+
+.humidity-graphic__percentage-symbol {
+  margin-left: auto;
+}
+
+.footer {
+  background-color: #100E1D;
+  padding: 24px;
+  text-align: center;
 }
