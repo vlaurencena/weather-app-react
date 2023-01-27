@@ -1,6 +1,4 @@
 # Weather App
-## Links
-[Repository](https://github.com/vlaurencena/weather-app-react) | [Contact](mailto:victorlaurencena@gmail.com) | [Live version](https://weather-app-vlaurencena.herokuapp.com/)
 ## Description
 It is an app that displays weather information about user's location. User can choose to visualize info in metric or imperial system. 
 ## Built with
