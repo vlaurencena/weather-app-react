@@ -11,22 +11,33 @@ It is an app that displays weather information about user's location. User can c
 * [Weather API](https://dashboard.heroku.com/apps/weather-app-vlaurencena/deploy/github).
 
 ## Installation and Setup Instructions
-Clone down this repository. You will need `node` and `npm` installed globally on your machine.  
+1. First, clone the repository to your local machine by running the following command in your terminal:
 
-Installation:
+```bash
+git clone https://github.com/vlaurencena/weather-app-react.git
+```
 
-`npm install`  
+2. Navigate to the project directory:
 
-To Run Test Suite:  
+```bash
+cd weather-app-react
+```
 
-`npm test`  
+3. Install the required dependencies:
 
-To Start Server:
+```
+npm install
+```
 
-`npm start`  
+4. Run the app:
+```
+npm run
+```
 
-To Visit App:
+5. Open your browser and go to the following URL to view the app:
+```
+http://localhost:3000/
+```
 
-`localhost:3000/`  
 ## Extra Info
 This project was built according to [devChallenges's weather app challenge](https://devchallenges.io/challenges/mM1UIenRhK808W8qmLWv).
