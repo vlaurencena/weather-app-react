@@ -1,5 +1,5 @@
 # Weather App
-![Weather app preview](src/media/weather-app-preview.png)
+![Weather app preview](src/media/weather-app-preview.gif)
 ## Description
 It is an app that displays weather information about user's location. User can choose to visualize info in metric or imperial system. 
 ## Built with
@@ -32,7 +32,7 @@ npm install
 
 4. Run the app:
 ```
-npm run
+npm start
 ```
 
 5. Open your browser and go to the following URL to view the app:
