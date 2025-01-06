@@ -9,7 +9,7 @@ It is an app that displays weather information about user's location. User can c
 * React.
 * React Router DOM.
 * Axios.
-* [Weather API](https://dashboard.heroku.com/apps/weather-app-vlaurencena/deploy/github).
+* [Weather API](https://openweathermap.org/api).
 
 ## Installation and Setup Instructions
 1. First, clone the repository to your local machine by running the following command in your terminal:
